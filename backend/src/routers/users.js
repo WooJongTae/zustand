@@ -1,7 +1,7 @@
 const express = require("express");
+const jwt = require("jsonwebtoken");
 const router = express.Router();
 const User = require("../models/User");
-const comparePasswor = require("../models/User");
 
 router.post("/register", async (req, res, next) => {
   try {
@@ -21,8 +21,14 @@ router.post("/login", async (req, res, next) => {
     if (!user) {
       return res.status(400).send("아이디가 없습니다.");
     }
-    const isMatch = await user.comparePasswor(req.body.password);
+    const isMatch = await user.comparePassword(req.body.password);
     console.log(isMatch);
+
+    const payload = {
+      userId: user._id.toHexString(),
+    };
+    const accessToken = jwt.sign(payload, process.env.SECRET_KET);
+    return res.json({ user, accessToken });
   } catch (error) {
     next(error);
   }

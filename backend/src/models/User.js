@@ -21,6 +21,7 @@ const userSchema = new mongoose.Schema({
   },
   image: {
     type: String,
+    default: "",
   },
 });
 
@@ -35,13 +36,9 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
-userSchema.methods.comparePasswor = async function (inputPassword) {
-  console.log(1);
+userSchema.methods.comparePassword = async function (inputPassword) {
   const user = this;
-  console.log(user.passwrod);
-  console.log(inputPassword);
-  const successPassword = await bcrypt.compare(user.passwrod, inputPassword);
-
+  const successPassword = await bcrypt.compare(inputPassword, user.password);
   return successPassword;
 };
 

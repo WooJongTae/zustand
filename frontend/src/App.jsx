@@ -7,6 +7,8 @@ import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useEffect } from "react";
+import useStore from "./store/store";
 
 function Layout() {
   return (
@@ -27,6 +29,9 @@ function Layout() {
 }
 
 function App() {
+  const { initialState, userRegister } = useStore();
+  console.log(userRegister);
+  useEffect(() => {}, []);
   return (
     <Routes>
       <Route path="/" element={<Layout />}>

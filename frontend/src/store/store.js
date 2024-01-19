@@ -26,7 +26,12 @@ const useStore = create(
         console.log(data);
         const response = await axiosInstance.post("/users/register", data);
         console.log(response);
-        set((state) => ({ ...state, isLoading: false }));
+        set((state) => ({
+          ...state,
+          userData: response.user,
+          isLoading: false,
+          isAuth: true,
+        }));
         toast.info("아이디 생성에 성공했습니다.");
       } catch (error) {
         console.log({ ...initialState, error: error });
@@ -40,9 +45,14 @@ const useStore = create(
         set((state) => ({ ...state, isLoading: true }));
         console.log(data);
         const response = await axiosInstance.post("/users/login", data);
-        console.log(response);
-        set((state) => ({ ...state, isLoading: false }));
-        localStorage.setItem("access", "추가해야함");
+        console.log(response.data);
+        set((state) => ({
+          ...state,
+          userData: response.data.user,
+          isAuth: true,
+          isLoading: false,
+        }));
+        localStorage.setItem("access", response.data.accessToken);
         toast.info("로그인 성공했습니다.");
       } catch (error) {
         console.log({ ...initialState, error: error });
