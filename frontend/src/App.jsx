@@ -1,4 +1,4 @@
-import { Outlet, Route, Routes } from "react-router-dom";
+import { Outlet, Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import Navbar from "./layout/Navbar";
 import Footer from "./layout/Footer";
@@ -9,6 +9,9 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
 import useStore from "./store/store";
+import ProtectedPage from "./pages/ProtectedPage";
+import ProtectedRoutes from "./components/ProtectedRoutes";
+import NotAuthRoutes from "./components/NotAuthRoutes";
 
 function Layout() {
   return (
@@ -29,15 +32,25 @@ function Layout() {
 }
 
 function App() {
-  const { initialState, userRegister } = useStore();
-  console.log(userRegister);
-  useEffect(() => {}, []);
+  const { pathname } = useLocation();
+  const { initialState, userAuth } = useStore();
+  const { isAuth } = initialState;
+  useEffect(() => {
+    // if (isAuth) {
+    userAuth();
+    // }
+  }, [isAuth, pathname, userAuth]);
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<LandingPage />} />
-        <Route path="register" element={<RegisterPage />} />
-        <Route path="login" element={<LoginPage />} />
+        <Route element={<ProtectedRoutes isAuth={isAuth} />}>
+          <Route path="pro" element={<ProtectedPage />} />
+        </Route>
+        <Route element={<NotAuthRoutes isAuth={isAuth} />}>
+          <Route path="register" element={<RegisterPage />} />
+          <Route path="login" element={<LoginPage />} />
+        </Route>
       </Route>
     </Routes>
   );
