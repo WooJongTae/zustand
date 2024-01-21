@@ -76,6 +76,7 @@ const useStore = create(
           initialState: { ...state.initialState, isLoading: true },
         }));
         const response = await axiosInstance.get("/users/auth");
+        console.log(response);
         set((state) => ({
           ...state,
           initialState: {
@@ -85,6 +86,18 @@ const useStore = create(
             error: "",
           },
         }));
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    userLogout: async () => {
+      try {
+        const response = await axiosInstance.post("/users/logout");
+        console.log(response);
+        set(() => ({
+          initialState,
+        }));
+        localStorage.removeItem("access");
       } catch (error) {
         console.log(error);
       }

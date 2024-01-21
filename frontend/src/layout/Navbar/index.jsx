@@ -16,7 +16,7 @@ const Navbar = () => {
           <div className="flex items-center text-2xl h-14">
             <Link to={"/"}>Logo</Link>
           </div>
-          <div>
+          <div className="sm:hidden text-2xl">
             <button onClick={handleMenu}>{menu ? "-" : "+"}</button>
           </div>
           <div className="hidden sm:block">
@@ -24,7 +24,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="block sm:hidden">{menu && <NavItem />}</div>
+        <div className="block sm:hidden">{menu && <NavItem mobile />}</div>
       </div>
     </section>
   );
