@@ -28,17 +28,21 @@ router.post("/register", async (req, res, next) => {
 router.post("/login", async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.body.email });
-    console.log(user);
+
     if (!user) {
       return res.status(400).send("아이디가 없습니다.");
     }
     const isMatch = await user.comparePassword(req.body.password);
-    console.log(isMatch);
 
+    if (!isMatch) {
+      return res.status(400).send("비밀번호가 틀립니다.!");
+    }
     const payload = {
       userId: user._id.toHexString(),
     };
-    const accessToken = jwt.sign(payload, process.env.SECRET_KEY);
+    const accessToken = jwt.sign(payload, process.env.SECRET_KEY, {
+      expiresIn: "1m",
+    });
     return res.json({ user, accessToken });
   } catch (error) {
     next(error);

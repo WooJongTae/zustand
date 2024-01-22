@@ -24,7 +24,7 @@ const useStore = create(
       try {
         set((state) => ({ ...state, isLoading: true }));
         const response = await axiosInstance.post("/users/register", data);
-        console.log(response);
+
         set((state) => ({
           ...state,
           initialState: {
@@ -62,7 +62,6 @@ const useStore = create(
         localStorage.setItem("access", response.data.accessToken);
         toast.info("로그인 성공했습니다.");
       } catch (error) {
-        console.log({ ...initialState, error: error });
         set((state) => ({
           initialState: { ...state.initialState, error: error.message },
         }));
@@ -73,10 +72,12 @@ const useStore = create(
     userAuth: async () => {
       try {
         set((state) => ({
-          initialState: { ...state.initialState, isLoading: true },
+          initialState: {
+            ...state.initialState,
+            isLoading: true,
+          },
         }));
         const response = await axiosInstance.get("/users/auth");
-        console.log(response);
         set((state) => ({
           ...state,
           initialState: {
@@ -88,6 +89,14 @@ const useStore = create(
         }));
       } catch (error) {
         console.log(error);
+        set((state) => ({
+          initialState: {
+            ...state.initialState,
+            isLoading: false,
+            isAuth: false,
+          },
+        }));
+        localStorage.removeItem("access");
       }
     },
     userLogout: async () => {
