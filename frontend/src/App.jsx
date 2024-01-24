@@ -12,6 +12,7 @@ import useStore from "./store/store";
 import ProtectedPage from "./pages/ProtectedPage";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import NotAuthRoutes from "./components/NotAuthRoutes";
+import MoviePage from "./pages/MoviePage";
 
 function Layout() {
   return (
@@ -52,6 +53,7 @@ function App() {
           <Route path="register" element={<RegisterPage />} />
           <Route path="login" element={<LoginPage />} />
         </Route>
+        <Route path="movie/:movieId" element={<MoviePage />} />
       </Route>
     </Routes>
   );

@@ -20,6 +20,8 @@ mongoose
 
 app.use("/users", require("./routers/users"));
 
+app.use("/comment", require("./routers/comment"));
+
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
