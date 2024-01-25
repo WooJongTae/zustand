@@ -21,17 +21,22 @@ const GridImage = ({ movies, actorList }) => {
     );
   } else {
     return (
-      <div className=" grid w-10/12 mx-auto grid-cols-4 mt-10 gap-10">
+      <div className=" grid w-10/12 mx-auto grid-cols-4 mt-10 gap-10 ">
         {movies.map((movie) => (
           <Link to={`movie/${movie.id}`}>
-            <div>
-              <img
-                className=""
-                src={`${import.meta.env.VITE_BASE_IMAGE_URL}${
-                  movie.poster_path
-                }`}
-                alt={movie.title}
-              />
+            <div className=" relative">
+              <div className="  hover:bg-slate-500">
+                <img
+                  className=""
+                  src={`${import.meta.env.VITE_BASE_IMAGE_URL}${
+                    movie.poster_path
+                  }`}
+                  alt={movie.title}
+                />
+              </div>
+              <div className="opacity-0  absolute top-[0] left-[0] w-full h-full hover:opacity-1 flex justify-center items-center">
+                123142515
+              </div>
             </div>
           </Link>
         ))}

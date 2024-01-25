@@ -16,7 +16,6 @@ router.get("/auth", auth, async (req, res, next) => {
 
 router.post("/register", async (req, res, next) => {
   try {
-    console.log("요청", req.body);
     const user = new User(req.body);
     await user.save();
     return res.sendStatus(200);

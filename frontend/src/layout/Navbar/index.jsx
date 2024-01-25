@@ -14,7 +14,7 @@ const Navbar = () => {
       <div className="w-full">
         <div className="flex items-center justify-between mx-5 sm:mx-10 lg:mx-20">
           <div className="flex items-center text-2xl h-14">
-            <Link to={"/"}>Logo</Link>
+            <Link to={"/"}>영화 소개 사이트</Link>
           </div>
           <div className="sm:hidden text-2xl">
             <button onClick={handleMenu}>{menu ? "-" : "+"}</button>

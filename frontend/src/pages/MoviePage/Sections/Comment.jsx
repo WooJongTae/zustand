@@ -6,7 +6,7 @@ import SingleComment from "./SingleComment";
 import ReplyComment from "./ReplyComment";
 const Comment = ({ commentList, refreshData }) => {
   const { movieId } = useParams();
-  const { userRegister, initialState } = useStore();
+  const { initialState } = useStore();
 
   console.log(initialState.userData.id);
 
@@ -36,11 +36,11 @@ const Comment = ({ commentList, refreshData }) => {
 
   return (
     <div>
-      댓글
+      <p className="border-b border-solid border-black p-4 font-bold">댓글</p>
       {commentList &&
         commentList.map(
           (comment, i) =>
-            !comment.reponseTo && (
+            !comment.responseTo && (
               <div>
                 <SingleComment
                   movieId={movieId}
@@ -49,14 +49,20 @@ const Comment = ({ commentList, refreshData }) => {
                 />
                 <ReplyComment
                   commentList={commentList}
-                  commentId={comment._id}
+                  // 리프레쉬추가
+                  movieId={movieId}
+                  parentComment={comment._id}
                 />
               </div>
             )
         )}
       <form onSubmit={onSubmit}>
-        <textarea value={comment} onChange={textValue} />
-        <button type="submit">작성</button>
+        <textarea
+          value={comment}
+          onChange={textValue}
+          className="border border-solid w-full border-black"
+        />
+        <button type="submit">작성하기!</button>
       </form>
     </div>
   );

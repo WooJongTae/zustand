@@ -44,19 +44,30 @@ const MoviePage = () => {
     };
     detailMovies();
   }, []);
+
   const actorDataHandle = () => {
     setActor(!actor);
+  };
+
+  const refreshData = (newData) => {
+    setComment([...comments, newData]);
   };
   return (
     <div>
       <img
+        className=" w-3/5 mx-auto h-[50rem]"
         src={`${import.meta.env.VITE_BASE_IMAGE_URL}${detailMovie.poster_path}`}
       />
       <p>{detailMovie.original_title}</p>
       <p>{detailMovie.overview}</p>
       {actor && <GridImage actorList={creditData} />}
-      <button onClick={actorDataHandle}>배우보기</button>
-      <Comment commentList={comments} />
+      <button
+        onClick={actorDataHandle}
+        className=" border border-solid border-black p-4 font-bold mx-auto block"
+      >
+        배우보기
+      </button>
+      <Comment commentList={comments} refreshData={refreshData} />
     </div>
   );
 };

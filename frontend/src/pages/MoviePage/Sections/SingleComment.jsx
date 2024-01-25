@@ -13,7 +13,7 @@ const SingleComment = ({ movieId, commentData }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-
+    console.log(commentData._id);
     const body = {
       writer: initialState.userData.id,
       content: comment,
@@ -22,6 +22,7 @@ const SingleComment = ({ movieId, commentData }) => {
     };
 
     axiosInstance.post("/comment/commentSave", body).then((res) => {
+      console.log(res);
       if (res.data.success) {
         console.log(res);
       } else {
@@ -33,13 +34,19 @@ const SingleComment = ({ movieId, commentData }) => {
     setReply(!reply);
   };
   return (
-    <div>
+    <div className="border border-solid  border-red-400">
       <p>{commentData.content}</p>
-      <p onClick={handleReply}>리플보기</p>
+      <p onClick={handleReply}>리플작성하기</p>
       {reply && (
         <form onSubmit={onSubmit}>
-          <textarea value={comment} onChange={textValue} />
-          <button type="submit">작성</button>
+          <textarea
+            className=" bg-red-200 w-full "
+            value={comment}
+            onChange={textValue}
+          />
+          <button className=" inline-block bg-slate-400" type="submit">
+            작성
+          </button>
         </form>
       )}
     </div>

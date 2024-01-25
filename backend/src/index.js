@@ -27,7 +27,6 @@ app.get("/", (req, res) => {
 });
 
 app.use(function (err, req, res, next) {
-  console.log(res);
   res.status(err.status || 500);
   res.send(err.message);
 });

@@ -18,9 +18,10 @@ const LandingPage = () => {
             import.meta.env.VITE_API_KEY
           }&language=ko-KR&page=1&region=ko`
         );
+        console.log(response);
         setCurrentPage((state) => state + 1);
         setMovies((state) => [...state, ...response.data.results]);
-        setMainMovieImage(response.data.results[0]);
+        setMainMovieImage(response.data.results.splice(0, 5));
       } catch (error) {
         console.log(error);
       }
@@ -37,7 +38,7 @@ const LandingPage = () => {
       );
       setCurrentPage((state) => state + 1);
       setMovies((state) => [...state, ...response.data.results]);
-      setMainMovieImage(response.data.results[0]);
+      setMainMovieImage(response.data.results.splice(0, 5));
     } catch (error) {
       console.log(error);
     }
@@ -53,8 +54,9 @@ const LandingPage = () => {
           imagePath={`${import.meta.env.VITE_BASE_IMAGE_URL}${
             mainMovieImage.backdrop_path
           }`}
-          title={mainMovieImage.title}
-          sub={mainMovieImage.overview}
+          imageLists={mainMovieImage}
+          // title={mainMovieImage.title}
+          // sub={mainMovieImage.overview}
         />
       )}
       <GridImage movies={movies} />
