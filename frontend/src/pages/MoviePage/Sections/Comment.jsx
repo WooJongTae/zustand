@@ -29,7 +29,7 @@ const Comment = ({ commentList, refreshData }) => {
         alert("실패");
       }
     });
-    // window.location.reload();
+    window.location.reload();
   };
   console.log(commentList);
   return (
