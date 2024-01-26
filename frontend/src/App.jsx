@@ -46,13 +46,13 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<LandingPage />} />
         <Route element={<ProtectedRoutes isAuth={isAuth} />}>
-          <Route path="pro" element={<ProtectedPage />} />
+          <Route path="/pro" element={<ProtectedPage />} />
         </Route>
         <Route element={<NotAuthRoutes isAuth={isAuth} />}>
-          <Route path="register" element={<RegisterPage />} />
-          <Route path="login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
         </Route>
-        <Route path="movie/:movieId" element={<MoviePage />} />
+        <Route path="/movie/:movieId" element={<MoviePage />} />
       </Route>
     </Routes>
   );
