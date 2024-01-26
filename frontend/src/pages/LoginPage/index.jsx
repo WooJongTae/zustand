@@ -43,7 +43,7 @@ const LoginPage = () => {
           <input
             type="email"
             id="email"
-            className="w-full mt-2 bg-white rounded-md py-4 text-center "
+            className="w-full mt-2 bg-white rounded-md py-4 text-center text-black"
             {...register("email", emailRequired)}
           />
         </div>
@@ -54,7 +54,7 @@ const LoginPage = () => {
           <input
             type="password"
             id="password"
-            className="w-full mt-2 bg-white rounded-md py-4 text-center"
+            className="w-full mt-2 bg-white rounded-md py-4 text-center text-black"
             {...register("password", passwordRequired)}
           />
         </div>

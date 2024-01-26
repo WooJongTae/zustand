@@ -45,7 +45,7 @@ const RegisterPage = () => {
           <input
             type="text"
             id="name"
-            className="w-full mt-2 bg-white rounded-md py-4 text-center"
+            className="w-full mt-2 bg-white rounded-md py-4 text-center text-black"
             {...register("name", nameRequired)}
           />
           {errors.name && <p>{errors.name.message}</p>}
@@ -55,7 +55,7 @@ const RegisterPage = () => {
           <input
             type="email"
             id="email"
-            className="w-full mt-2 bg-white rounded-md py-4 text-center"
+            className="w-full mt-2 bg-white rounded-md py-4 text-center text-black"
             {...register("email", emailRequired)}
           />
         </div>
@@ -64,7 +64,7 @@ const RegisterPage = () => {
           <input
             type="password"
             id="password"
-            className="w-full mt-2 bg-white rounded-md py-4 text-center"
+            className="w-full mt-2 bg-white rounded-md py-4 text-center text-black"
             {...register("password", passwordRequired)}
           />
         </div>
