@@ -42,7 +42,7 @@ const ReplyComment = ({ commentList, movieId, parentComment, refreshData }) => {
     setReplyOn(!replyOn);
   };
   return (
-    <div>
+    <div className="">
       {commentNumber > 0 && (
         <p onClick={replyHanlde} className=" inline-block">
           댓글수{commentNumber}

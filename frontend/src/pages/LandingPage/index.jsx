@@ -21,7 +21,7 @@ const LandingPage = () => {
         console.log(response);
         setCurrentPage((state) => state + 1);
         setMovies((state) => [...state, ...response.data.results]);
-        setMainMovieImage(response.data.results.splice(0, 5));
+        setMainMovieImage(response.data.results.slice(0, 5));
       } catch (error) {
         console.log(error);
       }
@@ -60,7 +60,12 @@ const LandingPage = () => {
         />
       )}
       <GridImage movies={movies} />
-      <button onClick={loadMore}>더 많이</button>
+      <button
+        onClick={loadMore}
+        className=" border border-solid bg-slate-500 mx-auto block p-4 my-4"
+      >
+        더 많이
+      </button>
     </div>
   );
 };

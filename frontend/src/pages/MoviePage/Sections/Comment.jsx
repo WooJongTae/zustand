@@ -41,7 +41,7 @@ const Comment = ({ commentList, refreshData }) => {
         commentList.map(
           (comment, i) =>
             !comment.responseTo && (
-              <div>
+              <div className=" mx-0 sm:mx-96 ">
                 <SingleComment
                   movieId={movieId}
                   commentData={comment}

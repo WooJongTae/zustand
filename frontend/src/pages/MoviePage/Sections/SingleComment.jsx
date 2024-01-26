@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import useStore from "../../../store/store";
 import axiosInstance from "../../../utils/axios";
+import { BiReply } from "react-icons/bi";
 
 const SingleComment = ({ movieId, commentData }) => {
   const { userRegister, initialState } = useStore();
   const [reply, setReply] = useState(false);
   const [comment, setComment] = useState("");
-
+  console.log(commentData);
   const textValue = (e) => {
     setComment(e.target.value);
   };
@@ -35,6 +36,8 @@ const SingleComment = ({ movieId, commentData }) => {
   };
   return (
     <div className="border border-solid  border-red-400">
+      <BiReply />
+      <p>작성자: {commentData.writer.name}</p>
       <p>{commentData.content}</p>
       <p onClick={handleReply}>리플작성하기</p>
       {reply && (

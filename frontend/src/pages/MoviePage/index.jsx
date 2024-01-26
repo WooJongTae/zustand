@@ -55,7 +55,7 @@ const MoviePage = () => {
   return (
     <div>
       <img
-        className=" w-3/5 mx-auto h-[50rem]"
+        className=" w-3/5 mx-auto h-[50rem] mt-6"
         src={`${import.meta.env.VITE_BASE_IMAGE_URL}${detailMovie.poster_path}`}
       />
       <p>{detailMovie.original_title}</p>

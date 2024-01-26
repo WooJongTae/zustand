@@ -24,8 +24,8 @@ const GridImage = ({ movies, actorList }) => {
       <div className=" grid w-10/12 mx-auto grid-cols-4 mt-10 gap-10 ">
         {movies.map((movie) => (
           <Link to={`movie/${movie.id}`}>
-            <div className=" relative">
-              <div className="  hover:bg-slate-500">
+            <div className=" relative ">
+              <div className="">
                 <img
                   className=""
                   src={`${import.meta.env.VITE_BASE_IMAGE_URL}${
@@ -34,8 +34,8 @@ const GridImage = ({ movies, actorList }) => {
                   alt={movie.title}
                 />
               </div>
-              <div className="opacity-0  absolute top-[0] left-[0] w-full h-full hover:opacity-1 flex justify-center items-center">
-                123142515
+              <div className="opacity-0 bg-zinc-400  absolute top-[0] left-[0] w-full h-full hover:opacity-100 flex justify-center items-center transition duration-500">
+                {<p className=" text-black">{movie.title}</p>}
               </div>
             </div>
           </Link>
