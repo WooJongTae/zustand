@@ -13,7 +13,7 @@ import ProtectedPage from "./pages/ProtectedPage";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import NotAuthRoutes from "./components/NotAuthRoutes";
 import MoviePage from "./pages/MoviePage";
-
+import MoviePage from "./pages/Error";
 function Layout() {
   return (
     <div className="flex flex-col justify-between h-screen">
@@ -54,6 +54,7 @@ function App() {
         </Route>
         <Route path="/movie/:movieId" element={<MoviePage />} />
       </Route>
+      <Route path="/*" element={<Error />}></Route>
     </Routes>
   );
 }
