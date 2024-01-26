@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigation, Pagination, Scrollbar } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/scrollbar";
 import "swiper/css";
@@ -7,19 +7,17 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 const MainImage = ({ imageLists }) => {
-  console.log(imageLists);
   return (
     <div className=" w-full relative h-auto bg-cover bg-center ">
       <Swiper
         spaceBetween={50}
         slidesPerView={1}
-        Scrollbar={{ draggable: true }}
         modules={[Navigation, Pagination]}
         navigation
         pagination={{ clickable: true }}
       >
-        {imageLists.map((imageList) => (
-          <SwiperSlide>
+        {imageLists.map((imageList, i) => (
+          <SwiperSlide key={i}>
             <img
               src={`${import.meta.env.VITE_BASE_IMAGE_URL}${
                 imageList.backdrop_path

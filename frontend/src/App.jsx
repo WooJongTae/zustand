@@ -25,10 +25,9 @@ function Layout() {
       />
       <Navbar />
       {/* mx-auto w-10/12 max-w-4xl */}
-      <main className=" mb-auto  mx-auto w-full">
+      <main className=" mb-auto  mx-auto w-full bg-black">
         <Outlet />
       </main>
-      <Footer />
     </div>
   );
 }

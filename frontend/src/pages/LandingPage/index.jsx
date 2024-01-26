@@ -9,7 +9,6 @@ const LandingPage = () => {
   const [mainMovieImage, setMainMovieImage] = useState([]);
   const [currentPage, setCurrentPage] = useState(2);
   console.log(movies);
-
   useEffect(() => {
     const movieData = async () => {
       try {
@@ -18,7 +17,7 @@ const LandingPage = () => {
             import.meta.env.VITE_API_KEY
           }&language=ko-KR&page=1&region=ko`
         );
-        console.log(response);
+
         setCurrentPage((state) => state + 1);
         setMovies((state) => [...state, ...response.data.results]);
         setMainMovieImage(response.data.results.slice(0, 5));
@@ -43,7 +42,7 @@ const LandingPage = () => {
       console.log(error);
     }
   };
-  console.log(currentPage);
+
   const loadMore = () => {
     loadMovieData();
   };
@@ -62,7 +61,7 @@ const LandingPage = () => {
       <GridImage movies={movies} />
       <button
         onClick={loadMore}
-        className=" border border-solid bg-slate-500 mx-auto block p-4 my-4"
+        className=" border border-solid bg-slate-200 mx-auto block p-4 my-4 rounded-lg"
       >
         더 많이
       </button>

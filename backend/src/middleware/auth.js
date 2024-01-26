@@ -4,7 +4,7 @@ const User = require("../models/User");
 let auth = async (req, res, next) => {
   const header = req.headers.authorization.split(" ");
   const token = header[1];
-  console.log("token", typeof token);
+
   if (token === "null") {
     return res.sendStatus(401);
     // 401인데 테스트

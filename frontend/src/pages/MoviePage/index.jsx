@@ -12,7 +12,6 @@ const MoviePage = () => {
   const [actor, setActor] = useState(false);
   const [comments, setComment] = useState([]);
   // 이름뭐하지?
-  console.log(movieId);
   useEffect(() => {
     const detailMovies = async () => {
       try {
@@ -36,7 +35,6 @@ const MoviePage = () => {
           alert("코멘트 가져오기 실패");
         }
         setDetailMovie(movieData.data);
-        console.log(credit.data);
         setCreditData(credit.data.cast);
       } catch (error) {
         console.log(error);
@@ -53,7 +51,7 @@ const MoviePage = () => {
     setComment([...comments, newData]);
   };
   return (
-    <div>
+    <div className=" bg-white">
       <img
         className=" w-3/5 mx-auto h-[50rem] mt-6"
         src={`${import.meta.env.VITE_BASE_IMAGE_URL}${detailMovie.poster_path}`}

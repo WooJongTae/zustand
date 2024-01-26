@@ -26,19 +26,13 @@ const NavItem = ({ mobile }) => {
 
         if (name === "로그아웃") {
           return (
-            <li
-              key={name}
-              className="py-2 text-center border-b-4 cursor-pointer"
-            >
+            <li key={name} className="py-2 text-center cursor-pointer">
               <Link onClick={handleLogout}>{name}</Link>
             </li>
           );
         } else {
           return (
-            <li
-              key={name}
-              className="py-2 text-center border-b-4 cursor-pointer"
-            >
+            <li key={name} className="py-2 text-center cursor-pointer">
               <Link to={to}>{name}</Link>
             </li>
           );

@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import useStore from "../../store/store";
 const LoginPage = () => {
   const { userLogin, initialState } = useStore();
-  console.log(initialState);
 
   const {
     register,
@@ -34,32 +33,35 @@ const LoginPage = () => {
     },
   };
   return (
-    <div className="flex flex-col ">
+    <div className="flex flex-col bg-black h-screen">
       <h1 className="text-3xl font-semibold text-center mt-4">로그인</h1>
-      <form className="mt-6 w-full" onSubmit={handleSubmit(onSubmit)}>
-        <div className="mx-60">
+      <form className="mt-60 w-full" onSubmit={handleSubmit(onSubmit)}>
+        <div className="mx-60 text-white">
           <label htmlFor="email" className=" text-lg font-bold">
             이메일
           </label>
           <input
             type="email"
             id="email"
-            className="w-full mt-2 bg-slate-400 rounded-md py-4 text-center "
+            className="w-full mt-2 bg-white rounded-md py-4 text-center "
             {...register("email", emailRequired)}
           />
         </div>
-        <div className="mx-60 ">
+        <div className="mx-60 text-white">
           <label htmlFor="password" className=" text-lg font-bold">
             비밀번호
           </label>
           <input
             type="password"
             id="password"
-            className="w-full mt-2 bg-slate-400 rounded-md py-4 text-center"
+            className="w-full mt-2 bg-white rounded-md py-4 text-center"
             {...register("password", passwordRequired)}
           />
         </div>
-        <button className="mt-5 bg-slate-400 p-4 mx-auto block" type="submit">
+        <button
+          className="mt-5 bg-white text-black p-4 mx-auto block"
+          type="submit"
+        >
           로그인
         </button>
       </form>

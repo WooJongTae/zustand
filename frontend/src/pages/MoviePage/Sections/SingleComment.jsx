@@ -7,14 +7,14 @@ const SingleComment = ({ movieId, commentData }) => {
   const { userRegister, initialState } = useStore();
   const [reply, setReply] = useState(false);
   const [comment, setComment] = useState("");
-  console.log(commentData);
+
   const textValue = (e) => {
     setComment(e.target.value);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(commentData._id);
+
     const body = {
       writer: initialState.userData.id,
       content: comment,
@@ -23,7 +23,6 @@ const SingleComment = ({ movieId, commentData }) => {
     };
 
     axiosInstance.post("/comment/commentSave", body).then((res) => {
-      console.log(res);
       if (res.data.success) {
         console.log(res);
       } else {

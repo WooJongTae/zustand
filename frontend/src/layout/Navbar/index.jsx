@@ -10,11 +10,11 @@ const Navbar = () => {
   };
 
   return (
-    <section className=" relative z-10 text-white bg-gray-900">
-      <div className="w-full">
+    <section className="fixed w-full z-10 text-white bg-gray-900  ">
+      <div className=" ">
         <div className="flex items-center justify-between mx-5 sm:mx-10 lg:mx-20">
-          <div className="flex items-center text-2xl h-14">
-            <Link to={"/"}>영화 소개 사이트</Link>
+          <div className="flex items-center text-2xl h-14 text-red-600">
+            <Link to={"/"}>NETFLEIX</Link>
           </div>
           <div className="sm:hidden text-2xl">
             <button onClick={handleMenu}>{menu ? "-" : "+"}</button>

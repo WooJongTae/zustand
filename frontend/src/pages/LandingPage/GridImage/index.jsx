@@ -6,8 +6,8 @@ const GridImage = ({ movies, actorList }) => {
   if (actorList) {
     return (
       <div className=" grid w-10/12 mx-auto grid-cols-4 mt-10 gap-10">
-        {actorList.map((actor) => (
-          <div>
+        {actorList.map((actor, i) => (
+          <div key={i}>
             <img
               className=""
               src={`${import.meta.env.VITE_BASE_IMAGE_URL}${
@@ -22,9 +22,9 @@ const GridImage = ({ movies, actorList }) => {
   } else {
     return (
       <div className=" grid w-10/12 mx-auto grid-cols-4 mt-10 gap-10 ">
-        {movies.map((movie) => (
-          <Link to={`movie/${movie.id}`}>
-            <div className=" relative ">
+        {movies.map((movie, i) => (
+          <Link to={`movie/${movie.id}`} key={i}>
+            <div className=" relative" key={i}>
               <div className="">
                 <img
                   className=""

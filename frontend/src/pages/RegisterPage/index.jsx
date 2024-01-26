@@ -4,7 +4,6 @@ import useStore from "../../store/store";
 
 const RegisterPage = () => {
   const { userRegister, initialState } = useStore();
-  console.log(initialState);
 
   const {
     register,
@@ -38,38 +37,41 @@ const RegisterPage = () => {
     },
   };
   return (
-    <div className="flex flex-col ">
+    <div className="flex flex-col bg-black h-screen">
       <h1 className="text-3xl font-semibold text-center">회원가입</h1>
-      <form className="mt-6" onSubmit={handleSubmit(onSubmit)}>
-        <div>
+      <form className="mt-60 text-slate-100" onSubmit={handleSubmit(onSubmit)}>
+        <div className="mx-60 ">
           <label htmlFor="name">이름</label>
           <input
             type="text"
             id="name"
-            className="w-full mt-2 bg-slate-400 rounded-md py-4 text-center"
+            className="w-full mt-2 bg-white rounded-md py-4 text-center"
             {...register("name", nameRequired)}
           />
           {errors.name && <p>{errors.name.message}</p>}
         </div>
-        <div>
+        <div className="mx-60 ">
           <label htmlFor="email">이메일</label>
           <input
             type="email"
             id="email"
-            className="w-full mt-2 bg-slate-400 rounded-md py-4 text-center"
+            className="w-full mt-2 bg-white rounded-md py-4 text-center"
             {...register("email", emailRequired)}
           />
         </div>
-        <div>
+        <div className="mx-60 ">
           <label htmlFor="password">비밀번호</label>
           <input
             type="password"
             id="password"
-            className="w-full mt-2 bg-slate-400 rounded-md py-4 text-center"
+            className="w-full mt-2 bg-white rounded-md py-4 text-center"
             {...register("password", passwordRequired)}
           />
         </div>
-        <button className="mt-5 bg-slate-400 p-4" type="submit">
+        <button
+          className="mt-5 bg-white p-4 block mx-auto text-black"
+          type="submit"
+        >
           회원가입
         </button>
       </form>

@@ -8,7 +8,6 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   function (config) {
-    console.log(1234);
     config.headers.Authorization = `Bearer ` + localStorage.getItem("access");
     return config;
   },
@@ -22,7 +21,6 @@ axiosInstance.interceptors.response.use(
     return response;
   },
   function (error) {
-    console.log(error);
     if (error.response.data === "jwt expired") {
       window.location.reload();
     }

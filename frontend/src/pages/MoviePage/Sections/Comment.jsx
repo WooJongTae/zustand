@@ -8,12 +8,10 @@ const Comment = ({ commentList, refreshData }) => {
   const { movieId } = useParams();
   const { initialState } = useStore();
 
-  console.log(initialState.userData.id);
-
-  const [comment, setComment] = useState("");
+  const [textComment, setTextComment] = useState("");
 
   const textValue = (e) => {
-    setComment(e.target.value);
+    setTextComment(e.target.value);
   };
 
   const onSubmit = (e) => {
@@ -21,27 +19,27 @@ const Comment = ({ commentList, refreshData }) => {
 
     const body = {
       writer: initialState.userData.id,
-      content: comment,
+      content: textComment,
       movieId,
     };
     axiosInstance.post("/comment/commentSave", body).then((res) => {
       if (res.data.success) {
         refreshData(res.data.data.content);
-        console.log(res);
       } else {
         alert("실패");
       }
     });
+    window.location.reload();
   };
-
+  console.log(commentList);
   return (
     <div>
       <p className="border-b border-solid border-black p-4 font-bold">댓글</p>
       {commentList &&
         commentList.map(
           (comment, i) =>
-            !comment.responseTo && (
-              <div className=" mx-0 sm:mx-96 ">
+            !comment?.responseTo && (
+              <div className=" mx-0 sm:mx-96 " key={i}>
                 <SingleComment
                   movieId={movieId}
                   commentData={comment}
@@ -49,6 +47,7 @@ const Comment = ({ commentList, refreshData }) => {
                 />
                 <ReplyComment
                   commentList={commentList}
+                  refreshData={refreshData}
                   // 리프레쉬추가
                   movieId={movieId}
                   parentComment={comment._id}
@@ -58,7 +57,7 @@ const Comment = ({ commentList, refreshData }) => {
         )}
       <form onSubmit={onSubmit}>
         <textarea
-          value={comment}
+          value={textComment}
           onChange={textValue}
           className="border border-solid w-full border-black"
         />

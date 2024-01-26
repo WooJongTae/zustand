@@ -88,7 +88,6 @@ const useStore = create(
           },
         }));
       } catch (error) {
-        console.log(error);
         set((state) => ({
           initialState: {
             ...state.initialState,
@@ -102,7 +101,7 @@ const useStore = create(
     userLogout: async () => {
       try {
         const response = await axiosInstance.post("/users/logout");
-        console.log(response);
+
         set(() => ({
           initialState,
         }));
