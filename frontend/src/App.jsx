@@ -1,7 +1,6 @@
 import { Outlet, Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import Navbar from "./layout/Navbar";
-import Footer from "./layout/Footer";
 import LandingPage from "./pages/LandingPage";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";

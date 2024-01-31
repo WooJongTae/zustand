@@ -4,6 +4,7 @@ import axiosInstance from "../../utils/axios";
 import axios from "axios";
 import GridImage from "../LandingPage/GridImage";
 import Comment from "./Sections/Comment";
+import Subscribe from "./Sections/Subscribe";
 
 const MoviePage = () => {
   const { movieId } = useParams();
@@ -59,6 +60,7 @@ const MoviePage = () => {
       <p>{detailMovie.original_title}</p>
       <p>{detailMovie.overview}</p>
       {actor && <GridImage actorList={creditData} />}
+      <Subscribe comments={comments} />
       <button
         onClick={actorDataHandle}
         className=" border border-solid border-black p-4 font-bold mx-auto block"

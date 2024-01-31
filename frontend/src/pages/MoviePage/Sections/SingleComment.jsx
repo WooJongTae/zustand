@@ -4,7 +4,7 @@ import axiosInstance from "../../../utils/axios";
 import { BiReply } from "react-icons/bi";
 
 const SingleComment = ({ movieId, commentData }) => {
-  const { userRegister, initialState } = useStore();
+  const { initialState } = useStore();
   const [reply, setReply] = useState(false);
   const [comment, setComment] = useState("");
 
@@ -25,6 +25,7 @@ const SingleComment = ({ movieId, commentData }) => {
     axiosInstance.post("/comment/commentSave", body).then((res) => {
       if (res.data.success) {
         console.log(res);
+        window.location.reload();
       } else {
         alert("실패");
       }
