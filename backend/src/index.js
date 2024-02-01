@@ -22,6 +22,8 @@ app.use("/users", require("./routers/users"));
 
 app.use("/comment", require("./routers/comment"));
 
+app.use("/subscriber", require("./routers/subscriber"));
+
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
