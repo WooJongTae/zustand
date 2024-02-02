@@ -13,6 +13,7 @@ import ProtectedRoutes from "./components/ProtectedRoutes";
 import NotAuthRoutes from "./components/NotAuthRoutes";
 import MoviePage from "./pages/MoviePage";
 import Error from "./pages/Error";
+import SubscribePage from "./pages/SubscribePage";
 function Layout() {
   return (
     <div className="flex flex-col justify-between h-screen">
@@ -46,12 +47,13 @@ function App() {
         <Route index element={<LandingPage />} />
         <Route element={<ProtectedRoutes isAuth={isAuth} />}>
           <Route path="/pro" element={<ProtectedPage />} />
+          <Route path="/movie/:movieId" element={<MoviePage />} />
+          <Route path="/subscribe" element={<SubscribePage />} />
         </Route>
         <Route element={<NotAuthRoutes isAuth={isAuth} />}>
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
         </Route>
-        <Route path="/movie/:movieId" element={<MoviePage />} />
       </Route>
       <Route path="/*" element={<Error />}></Route>
     </Routes>

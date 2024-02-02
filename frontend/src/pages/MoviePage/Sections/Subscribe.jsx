@@ -9,26 +9,28 @@ const Subscribe = () => {
   const { movieId } = useParams();
   const [subscribeNumber, setSubscribeNumber] = useState(0);
   const [subscribed, setSubscribed] = useState(false);
-  console.log(subscribed);
 
   useEffect(() => {
-    axiosInstance.post("/subscriber/subscribeNumber", movieId).then((res) => {
-      if (res.data.success) {
-        setSubscribeNumber(res.data.subscribeNumber);
-      } else {
-        alert("실패");
-      }
-    });
+    axiosInstance
+      .post("/subscriber/subscribeNumber", { movieId })
+      .then((res) => {
+        if (res.data.success) {
+          setSubscribeNumber(res.data.subscribeNumber);
+        } else {
+          alert("실패");
+        }
+      });
 
     const subscribedData = { movieId, userForm: id };
     axiosInstance.post("/subscriber/subscribed", subscribedData).then((res) => {
       if (res.data.success) {
+        console.log(res.data);
         setSubscribed(res.data.subscribed);
       } else {
         alert("실패");
       }
     });
-  }, []);
+  }, [movieId, id]);
 
   const onSubscribe = () => {
     let subscribeData = {
@@ -47,7 +49,6 @@ const Subscribe = () => {
           }
         });
     } else {
-      console.log(1212425125);
       axiosInstance
         .post("/subscriber/SubscribedData", subscribeData)
         .then((res) => {

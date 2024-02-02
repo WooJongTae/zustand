@@ -15,6 +15,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between mx-5 sm:mx-10 lg:mx-20">
           <div className="flex items-center text-2xl h-14 text-red-600">
             <Link to={"/"}>NETFLEIX</Link>
+            <Link to={"/subscribe"}>나의 추천페이지</Link>
           </div>
           <div className="sm:hidden text-2xl">
             <button onClick={handleMenu}>{menu ? "-" : "+"}</button>

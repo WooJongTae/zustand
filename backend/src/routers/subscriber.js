@@ -4,11 +4,9 @@ const Subscriber = require("../models/Subscriber");
 
 router.post("/subscribeNumber", async (req, res, next) => {
   try {
-    console.log(req.body.movieId);
     const subscribeNumber = await Subscriber.find({
       movieId: req.body.movieId,
     });
-
     return res
       .status(200)
       .json({ success: true, subscribeNumber: subscribeNumber.length });
@@ -57,3 +55,14 @@ router.post("/SubscribedData", async (req, res, next) => {
   }
 });
 module.exports = router;
+
+router.post("/recommendData", async (req, res, next) => {
+  try {
+    console.log(req.body);
+    const movieData = await Subscriber.find({ userForm: req.body.id });
+    console.log(movieData);
+    return res.status(200).json({ success: true, movieData });
+  } catch (error) {
+    next(error);
+  }
+});

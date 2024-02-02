@@ -31,7 +31,6 @@ const Comment = ({ commentList, refreshData }) => {
     });
     window.location.reload();
   };
-  console.log(commentList);
   return (
     <div>
       <p className="border-b border-solid border-black p-4 font-bold">댓글</p>

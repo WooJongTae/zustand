@@ -8,7 +8,6 @@ const LandingPage = () => {
   const [movies, setMovies] = useState([]);
   const [mainMovieImage, setMainMovieImage] = useState([]);
   const [currentPage, setCurrentPage] = useState(2);
-  console.log(movies);
   useEffect(() => {
     const movieData = async () => {
       try {

@@ -21,7 +21,7 @@ const GridImage = ({ movies, actorList }) => {
     );
   } else {
     return (
-      <div className=" grid w-10/12 mx-auto grid-cols-4 mt-10 gap-10 ">
+      <div className=" grid w-10/12 mx-auto sm:grid-cols-3 mt-10 gap-10 xl:grid-cols-4 grid-cols-1">
         {movies.map((movie, i) => (
           <Link to={`movie/${movie.id}`} key={i}>
             <div className=" relative" key={i}>
