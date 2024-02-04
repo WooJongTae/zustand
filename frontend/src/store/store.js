@@ -17,105 +17,105 @@ const initialState = {
 };
 
 const useStore = create(
-  // persist(
-  devtools((set) => ({
-    initialState,
-    userRegister: async (data) => {
-      try {
-        set((state) => ({ ...state, isLoading: true }));
-        const response = await axiosInstance.post("/users/register", data);
+  persist(
+    devtools((set) => ({
+      initialState,
+      userRegister: async (data) => {
+        try {
+          set((state) => ({ ...state, isLoading: true }));
+          const response = await axiosInstance.post("/users/register", data);
 
-        set((state) => ({
-          ...state,
-          initialState: {
-            userData: response.user,
-            isLoading: false,
-            isAuth: true,
-          },
-        }));
-        toast.info("아이디 생성에 성공했습니다.");
-      } catch (error) {
-        console.log({ ...initialState, error: error });
-        set((state) => ({
-          initialState: { ...state.initialState, error: error.message },
-        }));
-        toast.error(error.message);
-        // set({ ...initialState, error: error.message });
-      }
-    },
-    userLogin: async (data) => {
-      try {
-        // set((state) => ({ ...state, initialState: { isLoading: true } }));
-        set((state) => ({
-          initialState: { ...state.initialState, isLoading: true },
-        }));
-        const response = await axiosInstance.post("/users/login", data);
-        set((state) => ({
-          ...state,
-          initialState: {
-            userData: response.data.user,
-            isAuth: true,
-            isLoading: false,
-            error: "",
-          },
-        }));
-        localStorage.setItem("access", response.data.accessToken);
-        toast.info("로그인 성공했습니다.");
-      } catch (error) {
-        set((state) => ({
-          initialState: { ...state.initialState, error: error.message },
-        }));
-        toast.error(error.message);
-        // set({ ...initialState, error: error.message });
-      }
-    },
-    userAuth: async () => {
-      try {
-        set((state) => ({
-          initialState: {
-            ...state.initialState,
-            isLoading: true,
-          },
-        }));
-        const response = await axiosInstance.get("/users/auth");
-        set((state) => ({
-          ...state,
-          initialState: {
-            userData: response.data,
-            isAuth: true,
-            isLoading: false,
-            error: "",
-          },
-        }));
-      } catch (error) {
-        set((state) => ({
-          initialState: {
-            ...state.initialState,
-            isLoading: false,
-            isAuth: false,
-          },
-        }));
-        localStorage.removeItem("access");
-      }
-    },
-    userLogout: async () => {
-      try {
-        const response = await axiosInstance.post("/users/logout");
+          set((state) => ({
+            ...state,
+            initialState: {
+              userData: response.user,
+              isLoading: false,
+              isAuth: true,
+            },
+          }));
+          toast.info("아이디 생성에 성공했습니다.");
+        } catch (error) {
+          console.log({ ...initialState, error: error });
+          set((state) => ({
+            initialState: { ...state.initialState, error: error.message },
+          }));
+          toast.error(error.message);
+          // set({ ...initialState, error: error.message });
+        }
+      },
+      userLogin: async (data) => {
+        try {
+          // set((state) => ({ ...state, initialState: { isLoading: true } }));
+          set((state) => ({
+            initialState: { ...state.initialState, isLoading: true },
+          }));
+          const response = await axiosInstance.post("/users/login", data);
+          set((state) => ({
+            ...state,
+            initialState: {
+              userData: response.data.user,
+              isAuth: true,
+              isLoading: false,
+              error: "",
+            },
+          }));
+          localStorage.setItem("access", response.data.accessToken);
+          toast.info("로그인 성공했습니다.");
+        } catch (error) {
+          set((state) => ({
+            initialState: { ...state.initialState, error: error.message },
+          }));
+          toast.error(error.message);
+          // set({ ...initialState, error: error.message });
+        }
+      },
+      userAuth: async () => {
+        try {
+          set((state) => ({
+            initialState: {
+              ...state.initialState,
+              isLoading: true,
+            },
+          }));
+          const response = await axiosInstance.get("/users/auth");
+          set((state) => ({
+            ...state,
+            initialState: {
+              userData: response.data,
+              isAuth: true,
+              isLoading: false,
+              error: "",
+            },
+          }));
+        } catch (error) {
+          set((state) => ({
+            initialState: {
+              ...state.initialState,
+              isLoading: false,
+              isAuth: false,
+            },
+          }));
+          localStorage.removeItem("access");
+        }
+      },
+      userLogout: async () => {
+        try {
+          const response = await axiosInstance.post("/users/logout");
 
-        set(() => ({
-          initialState,
-        }));
-        localStorage.removeItem("access");
-      } catch (error) {
-        console.log(error);
-      }
-    },
-  })),
-  {
-    name: "userStore",
-    // , storage: createJSONStorage(() => sessionStorage)
-  }
-  // )
+          set(() => ({
+            initialState,
+          }));
+          localStorage.removeItem("access");
+        } catch (error) {
+          console.log(error);
+        }
+      },
+    })),
+    {
+      name: "userStore",
+      // , storage: createJSONStorage(() => sessionStorage)
+    }
+  )
 );
 
 export default useStore;

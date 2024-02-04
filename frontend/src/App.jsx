@@ -37,9 +37,9 @@ function App() {
   const { initialState, userAuth } = useStore();
   const { isAuth } = initialState;
   useEffect(() => {
-    // if (isAuth) {
-    userAuth();
-    // }
+    if (isAuth) {
+      userAuth();
+    }
   }, [isAuth, pathname, userAuth]);
   return (
     <Routes>

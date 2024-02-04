@@ -58,8 +58,22 @@ module.exports = router;
 
 router.post("/recommendData", async (req, res, next) => {
   try {
-    console.log(req.body);
     const movieData = await Subscriber.find({ userForm: req.body.id });
+
+    return res.status(200).json({ success: true, movieData });
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.post("/removeData", async (req, res, next) => {
+  try {
+    // console.log(req.body.userId);
+    // console.log(movieId);
+    const movieData = await Subscriber.findOneAndDelete({
+      userForm: req.body.userId.id,
+      movieId: req.body.movieId,
+    });
     console.log(movieData);
     return res.status(200).json({ success: true, movieData });
   } catch (error) {
