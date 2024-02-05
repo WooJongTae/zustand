@@ -14,6 +14,7 @@ import NotAuthRoutes from "./components/NotAuthRoutes";
 import MoviePage from "./pages/MoviePage";
 import Error from "./pages/Error";
 import SubscribePage from "./pages/SubscribePage";
+import Search from "./pages/LandingPage/Search";
 function Layout() {
   return (
     <div className="flex flex-col justify-between h-screen">
@@ -54,6 +55,7 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
         </Route>
+        <Route path="/search" element={<Search />} />
       </Route>
       <Route path="/*" element={<Error />}></Route>
     </Routes>

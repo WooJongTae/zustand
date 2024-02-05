@@ -33,7 +33,6 @@ const SubscribePage = () => {
       }
     };
     fetchData();
-    // 이러면 2개다 들고올 필요 없는데,,,
   }, []);
   const removeData = async (movieId) => {
     try {
