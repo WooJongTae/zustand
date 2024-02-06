@@ -38,7 +38,7 @@ const Comment = ({ commentList, refreshData }) => {
         commentList.map(
           (comment, i) =>
             !comment?.responseTo && (
-              <div className=" mx-0 sm:mx-96 " key={i}>
+              <div className=" mx-0 sm:mx-96 my-4" key={i}>
                 <SingleComment
                   movieId={movieId}
                   commentData={comment}
@@ -54,13 +54,18 @@ const Comment = ({ commentList, refreshData }) => {
               </div>
             )
         )}
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className="m-5 text-center">
         <textarea
           value={textComment}
           onChange={textValue}
           className="border border-solid w-full border-black"
         />
-        <button type="submit">작성하기!</button>
+        <button
+          className="border-4 border-black p-3 bg-slate-400"
+          type="submit"
+        >
+          작성하기!
+        </button>
       </form>
     </div>
   );

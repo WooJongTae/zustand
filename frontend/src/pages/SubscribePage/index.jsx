@@ -53,10 +53,14 @@ const SubscribePage = () => {
     }
   };
   return (
-    <div>
+    <div className="mt-40">
+      <p className=" text-2xl font-bold text-center">
+        이미지를 클릭시 삭제됩니다!
+      </p>
       {recommendMovie.map((img) => (
         <div onClick={() => removeData(img.data.id)}>
           <img
+            className=" w-3/5 mx-auto mb-4"
             src={`https://image.tmdb.org/t/p/original/${img.data.backdrop_path}`}
           />
           <p></p>

@@ -5,16 +5,23 @@ const GridImage = ({ movies, actorList }) => {
 
   if (actorList) {
     return (
-      <div className=" grid w-10/12 mx-auto grid-cols-4 mt-10 gap-10">
+      <div className=" grid w-10/12 mx-auto sm:grid-cols-3 mt-10 gap-10 xl:grid-cols-4 grid-cols-1">
         {actorList.map((actor, i) => (
           <div key={i}>
-            <img
-              className=""
-              src={`${import.meta.env.VITE_BASE_IMAGE_URL}${
-                actor.profile_path
-              }`}
-              alt={actor.name}
-            />
+            {actor.profile_path ? (
+              <img
+                className=""
+                src={`${import.meta.env.VITE_BASE_IMAGE_URL}${
+                  actor.profile_path
+                }`}
+                alt={actor.name}
+              />
+            ) : (
+              <div className="flex items-center justify-center flex-col h-full">
+                <p> 이미지 없음</p>
+                <p>이름 : {actor.name}</p>
+              </div>
+            )}
           </div>
         ))}
       </div>
@@ -34,8 +41,12 @@ const GridImage = ({ movies, actorList }) => {
                   alt={movie.title}
                 />
               </div>
-              <div className="opacity-0 bg-zinc-400  absolute top-[0] left-[0] w-full h-full hover:opacity-100 flex justify-center items-center transition duration-500">
-                {<p className=" text-black">{movie.title}</p>}
+              <div className="opacity-0 bg-white  absolute top-[0] left-[0] w-full h-full hover:opacity-100 flex justify-center items-center transition duration-500">
+                {
+                  <p className=" text-black text-5xl text-center">
+                    {movie.title}
+                  </p>
+                }
               </div>
             </div>
           </Link>

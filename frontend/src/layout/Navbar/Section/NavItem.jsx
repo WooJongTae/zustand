@@ -10,6 +10,8 @@ const NavItem = ({ mobile }) => {
     { to: "login", name: "로그인", auth: false },
     { to: "register", name: "회원가입", auth: false },
     { to: "logout", name: "로그아웃", auth: true },
+    { to: "subscribe", name: "나의 추천", auth: true },
+    { to: "search", name: "검색", auth: true },
   ];
 
   const handleLogout = () => {

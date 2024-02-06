@@ -14,7 +14,7 @@ import NotAuthRoutes from "./components/NotAuthRoutes";
 import MoviePage from "./pages/MoviePage";
 import Error from "./pages/Error";
 import SubscribePage from "./pages/SubscribePage";
-import Search from "./pages/LandingPage/Search";
+import Search from "./pages/SearchPage";
 function Layout() {
   return (
     <div className="flex flex-col justify-between h-screen">
@@ -26,7 +26,7 @@ function Layout() {
       />
       <Navbar />
       {/* mx-auto w-10/12 max-w-4xl */}
-      <main className=" mb-auto  mx-auto w-full bg-black">
+      <main className=" mb-auto  mx-auto w-full ">
         <Outlet />
       </main>
     </div>
@@ -50,12 +50,12 @@ function App() {
           <Route path="/pro" element={<ProtectedPage />} />
           <Route path="/movie/:movieId" element={<MoviePage />} />
           <Route path="/subscribe" element={<SubscribePage />} />
+          <Route path="/search" element={<Search />} />
         </Route>
         <Route element={<NotAuthRoutes isAuth={isAuth} />}>
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
         </Route>
-        <Route path="/search" element={<Search />} />
       </Route>
       <Route path="/*" element={<Error />}></Route>
     </Routes>

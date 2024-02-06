@@ -36,7 +36,7 @@ const LandingPage = () => {
       );
       setCurrentPage((state) => state + 1);
       setMovies((state) => [...state, ...response.data.results]);
-      setMainMovieImage(response.data.results.splice(0, 5));
+      // setMainMovieImage(response.data.results.splice(0, 5));
     } catch (error) {
       console.log(error);
     }

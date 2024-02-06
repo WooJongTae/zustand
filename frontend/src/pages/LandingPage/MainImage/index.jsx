@@ -26,7 +26,7 @@ const MainImage = ({ imageLists }) => {
               className=" h-[40rem] w-full"
             />
             <div className=" absolute bottom-10 left-3 text-white">
-              <h1>{imageList.title}</h1>
+              <h1 className=" text-3xl mb-4">{imageList.title}</h1>
               <p>{imageList.overview}</p>
             </div>
           </SwiperSlide>

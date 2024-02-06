@@ -54,19 +54,20 @@ const MoviePage = () => {
   return (
     <div className=" bg-white">
       <img
-        className=" w-3/5 mx-auto h-[50rem] mt-6"
+        className=" w-3/5 mx-auto h-[50rem] mt-32 "
         src={`${import.meta.env.VITE_BASE_IMAGE_URL}${detailMovie.poster_path}`}
       />
-      <p>{detailMovie.original_title}</p>
-      <p>{detailMovie.overview}</p>
+      <h1 className=" text-2xl font-bold my-4">{detailMovie.original_title}</h1>
+      <p className="mb-5">{detailMovie.overview}</p>
       {actor && <GridImage actorList={creditData} />}
-      <Subscribe comments={comments} />
+
       <button
         onClick={actorDataHandle}
         className=" border border-solid border-black p-4 font-bold mx-auto block"
       >
-        배우보기
+        {actor ? "닫기" : "배우 보기"}
       </button>
+      <Subscribe comments={comments} />
       <Comment commentList={comments} refreshData={refreshData} />
     </div>
   );

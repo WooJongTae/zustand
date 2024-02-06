@@ -62,10 +62,21 @@ const Subscribe = () => {
     }
   };
   return (
-    <div>
-      {subscribed ? "구독완료 " : "구독하세요 "}
-      {subscribeNumber}
-      <button onClick={onSubscribe}> 구독</button>
+    <div className="flex justify-between mx-10">
+      <div
+        className={` border-black border-4 cursor-pointer p-3 ${
+          subscribed ? "bg-red-400" : ""
+        } `}
+      >
+        {subscribed ? (
+          <p className="  ">총 추천 수: {subscribeNumber}</p>
+        ) : (
+          <p>추천하세요 {subscribeNumber}</p>
+        )}
+      </div>
+      <div className=" border-black p-3 border-4 cursor-pointer">
+        <button onClick={onSubscribe}>추천하기 </button>
+      </div>
     </div>
   );
 };

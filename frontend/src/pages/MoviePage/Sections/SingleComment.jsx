@@ -34,20 +34,24 @@ const SingleComment = ({ movieId, commentData }) => {
   const handleReply = () => {
     setReply(!reply);
   };
+  console.log(commentData);
   return (
-    <div className="border border-solid  border-red-400">
-      <BiReply />
+    <div className="border-4 border-solid border-black mt-4">
+      {commentData.responseTo && <BiReply />}
       <p>작성자: {commentData.writer.name}</p>
       <p>{commentData.content}</p>
       <p onClick={handleReply}>리플작성하기</p>
       {reply && (
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} className="text-center">
           <textarea
-            className=" bg-red-200 w-full "
+            className=" border-4  w-full "
             value={comment}
             onChange={textValue}
           />
-          <button className=" inline-block bg-slate-400" type="submit">
+          <button
+            className=" inline-block border-4 mb-2 border-black p-2"
+            type="submit"
+          >
             작성
           </button>
         </form>
