@@ -2,7 +2,7 @@ import axios from "axios";
 
 const axiosInstance = axios.create({
   baseURL: import.meta.env.PROD
-    ? "https://server-s08w.onrender.com"
+    ? "https://server2-pe1z.onrender.com"
     : "http://localhost:4000",
 });
 
