@@ -15,6 +15,8 @@ import MoviePage from "./pages/MoviePage";
 import Error from "./pages/Error";
 import SubscribePage from "./pages/SubscribePage";
 import Search from "./pages/SearchPage";
+import Footer from "./layout/Footer";
+import Question from "./pages/Question";
 function Layout() {
   return (
     <div className="flex flex-col justify-between h-screen">
@@ -29,6 +31,8 @@ function Layout() {
       <main className=" mb-auto  mx-auto w-full ">
         <Outlet />
       </main>
+      <Question />
+      <Footer />
     </div>
   );
 }
