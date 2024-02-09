@@ -17,6 +17,7 @@ import SubscribePage from "./pages/SubscribePage";
 import Search from "./pages/SearchPage";
 import Footer from "./layout/Footer";
 import Question from "./pages/Question";
+import HomePage from "./pages/HomePage";
 function Layout() {
   return (
     <div className="flex flex-col justify-between h-screen">
@@ -49,7 +50,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<LandingPage />} />
+        <Route index element={<HomePage />} />
         <Route element={<ProtectedRoutes isAuth={isAuth} />}>
           <Route path="/pro" element={<ProtectedPage />} />
           <Route path="/movie/:movieId" element={<MoviePage />} />
