@@ -5,7 +5,11 @@ module.exports = {
     // screens: {
     //   tablet: "960px",
     // },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        main: "url('./assets/bg.jpg')",
+      },
+    },
   },
   plugins: [],
 };

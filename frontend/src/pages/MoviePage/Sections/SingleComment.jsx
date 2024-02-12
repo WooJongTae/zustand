@@ -36,9 +36,9 @@ const SingleComment = ({ movieId, commentData }) => {
   };
   console.log(commentData);
   return (
-    <div className="border-4 border-solid border-black mt-4">
+    <div className=" border-y-2 border-solid border-black">
       {commentData.responseTo && <BiReply />}
-      <p>작성자: {commentData.writer.name}</p>
+      <p> {commentData.writer.name}</p>
       <p>{commentData.content}</p>
       <p onClick={handleReply}>리플작성하기</p>
       {reply && (

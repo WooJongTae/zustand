@@ -15,7 +15,7 @@ const LoginPage = () => {
 
   const onSubmit = ({ email, password }) => {
     userLogin({ email, password });
-    reset();
+    // reset();
   };
 
   const emailRequired = {
@@ -33,39 +33,48 @@ const LoginPage = () => {
       message: "8자리 이상 비밀번호를 사용하세요.",
     },
   };
+  console.log(124);
   return (
-    <div className="flex flex-col bg-black h-screen">
-      <h1 className="text-3xl font-semibold text-center mt-4">로그인</h1>
-      <form className="mt-60 w-full" onSubmit={handleSubmit(onSubmit)}>
-        <div className="mx-60 text-white">
-          <label htmlFor="email" className=" text-lg font-bold">
-            이메일
-          </label>
-          <input
-            type="email"
-            id="email"
-            className="w-full mt-2 bg-white rounded-md py-4 text-center text-black"
-            {...register("email", emailRequired)}
-          />
-        </div>
-        <div className="mx-60 text-white">
-          <label htmlFor="password" className=" text-lg font-bold">
-            비밀번호
-          </label>
-          <input
-            type="password"
-            id="password"
-            className="w-full mt-2 bg-white rounded-md py-4 text-center text-black"
-            {...register("password", passwordRequired)}
-          />
-        </div>
-        <button
-          className="mt-5 bg-white text-black p-4 mx-auto block"
-          type="submit"
-        >
-          로그인
-        </button>
-      </form>
+    <div className=" bg-main h-screen w-full bg-cover flex justify-center items-center ">
+      <div className="z-20  h-50% w-50%  p-16 bg-black/50">
+        <h1 className="text-3xl font-semibold text-left">로그인</h1>
+        <form className=" w-full" onSubmit={handleSubmit(onSubmit)}>
+          <div className=" text-white">
+            <label htmlFor="email" className=" text-lg font-bold">
+              이메일
+            </label>
+            <input
+              type="email"
+              id="email"
+              className="w-full mt-2 bg-white rounded-md py-4 text-center text-black outline-gray-50"
+              {...register("email", emailRequired)}
+            />
+          </div>
+          {errors.email && (
+            <p className=" text-red-600">{errors.email.message}</p>
+          )}
+          <div className=" text-white">
+            <label htmlFor="password" className=" text-lg font-bold">
+              비밀번호
+            </label>
+            <input
+              type="password"
+              id="password"
+              className="w-full mt-2 bg-white rounded-md py-4 text-center text-black outline-gray-50"
+              {...register("password", passwordRequired)}
+            />
+          </div>
+          {errors.password && (
+            <p className=" text-red-600">{errors.password.message}</p>
+          )}
+          <button
+            className="mt-5 bg-white text-black p-4 mx-auto block"
+            type="submit"
+          >
+            로그인
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
