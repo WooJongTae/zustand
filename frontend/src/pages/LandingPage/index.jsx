@@ -17,7 +17,7 @@ const LandingPage = () => {
           }&language=ko-KR&page=1&region=ko`
         );
 
-        setCurrentPage((state) => state + 1);
+        // setCurrentPage((state) => state + 1);
         setMovies((state) => [...state, ...response.data.results]);
         setMainMovieImage(response.data.results.slice(0, 5));
       } catch (error) {
@@ -27,6 +27,18 @@ const LandingPage = () => {
     movieData();
   }, []);
 
+  const a = axios
+    .get(
+      `https://api.themoviedb.org/3/movie/now_playing?api_key=${
+        import.meta.env.VITE_API_KEY
+      }&language=ko-KR&page=1`
+    )
+    .then((res) => {
+      console.log(res);
+    });
+
+  console.log(movies);
+  console.log(currentPage);
   const loadMovieData = async () => {
     try {
       const response = await axiosInstance.get(

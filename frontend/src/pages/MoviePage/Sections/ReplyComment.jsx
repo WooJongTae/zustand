@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import SingleComment from "./SingleComment";
 
+// 이 컴포넌트는 그냥 싱글 컴포넌트 보여주는용도
 const ReplyComment = ({ commentList, movieId, parentComment, refreshData }) => {
   const [commentNumber, setCommentNumber] = useState(0);
   const [replyOn, setReplyOn] = useState(false);
+
   useEffect(() => {
     let commentNumbers = 0;
     commentList.map((comment) => {
@@ -14,6 +16,7 @@ const ReplyComment = ({ commentList, movieId, parentComment, refreshData }) => {
       setCommentNumber(commentNumbers);
     });
   }, []);
+
   const renderReply = () => {
     return (
       commentList &&

@@ -92,22 +92,22 @@ const HomePage = () => {
         </form>
       </div>
       <div className="bg-black">
-        <div className="  flex border-y-8 border-gray-400 px-28">
+        <div className="  flex border-y-8 border-gray-400 px-28 h-[40rem]">
           <div className="w-1/2 text-white">
-            <h1>TV로 즐기세요</h1>
-            <p>
+            <h1 className=" text-5xl font-bold">TV로 즐기세요</h1>
+            <p className="text-2xl">
               스마트 TV, PlayStation, Xbox, Chromecast, Apple TV, 블루레이
               플레이어 등 다양한 디바이스에서 시청하세요
             </p>
           </div>
-          <div className="w-1/2 relative h-[40rem] flex items-center">
-            <div className="flex justify-center items-center ">
+          <div className="w-1/2  h-[40rem] flex items-center">
+            <div className="flex justify-center items-center relative ">
               <img
                 className="w-[40rem] min-w-[20rem] max-w-[100%] "
                 src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/tv.png"
                 alt="이미지"
               />
-              <div className=" w-[29.3rem] absolute top-[28%] left-[82px]">
+              <div className=" w-[73%] absolute top-[21%] left-[13%]">
                 <video autoPlay loop muted className="w-full">
                   <source src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-tv-0819.m4v" />
                 </video>
@@ -115,28 +115,38 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-        <div>
-          <div>
-            <h1>어디서나 자유롭게 시청하세요</h1>
-            <p>
-              각종 영화와 시리즈를 스마트폰, 태블릿, 노트북, TV에서 무제한으로
-              스트리밍하세요.
-            </p>
-          </div>
-          <div>
-            <img
-              src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/device-pile.png"
-              alt="이미지"
-            />
-            <video autoPlay loop muted>
-              <source src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-devices.m4v" />
-            </video>
+        <div className=" border-b-8 border-gray-400 px-28 h-[40rem]">
+          <div className="flex mx-20 justify-center items-center">
+            <div className=" relative ">
+              <img
+                className=" relative z-10"
+                src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/device-pile.png"
+                alt="이미지"
+              />
+              <video
+                autoPlay
+                loop
+                muted
+                className=" absolute top-[8%] left-[19%] w-[61%] z-0"
+              >
+                <source src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-devices.m4v" />
+              </video>
+            </div>
+            <div className="text-white">
+              <h1>어디서나 자유롭게 시청하세요</h1>
+              <p>
+                각종 영화와 시리즈를 스마트폰, 태블릿, 노트북, TV에서 무제한으로
+                스트리밍하세요.
+              </p>
+            </div>
           </div>
         </div>
-        <div className="1">
-          <div>
-            <h1>어린이 전용 프로필을 만들어 보세요</h1>
-            <p>
+        <div className="flex px-28 h-[40rem]">
+          <div className="text-white">
+            <h1 className=" text-5xl font-bold">
+              어린이 전용 프로필을 만들어 보세요
+            </h1>
+            <p className="text-xl ">
               자기만의 공간에서 좋아하는 캐릭터와 즐기는 신나는 모험. 자녀에게
               이 특별한 경험을 선물하세요. 넷플릭스 회원이라면 무료입니다.
             </p>
@@ -148,16 +158,22 @@ const HomePage = () => {
             />
           </div>
         </div>
-        <div className="1">
-          <div>
-            <h1>즐겨 보는 콘텐츠를 저장해 오프라인으로 시청하세요</h1>
-            <p>비행기, 기차, 잠수함. 어디서든 시청하세요.</p>
-          </div>
-          <div>
-            <img
-              src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/mobile-0819.jpg"
-              alt="이미지"
-            />
+        <div className=" h-[40rem]">
+          <div className="flex">
+            <div>
+              <img
+                src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/mobile-0819.jpg"
+                alt="이미지"
+              />
+            </div>
+            <div className="text-white">
+              <h1 className=" text-5xl font-bold">
+                즐겨 보는 콘텐츠를 저장해 오프라인으로 시청하세요
+              </h1>
+              <p className="text-xl ">
+                비행기, 기차, 잠수함. 어디서든 시청하세요.
+              </p>
+            </div>
           </div>
         </div>
       </div>
