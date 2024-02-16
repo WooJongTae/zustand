@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axiosInstance from "../../utils/axios";
-import axios from "axios";
 import GridImage from "../LandingPage/GridImage";
 import Comment from "./Sections/Comment";
 import Subscribe from "./Sections/Subscribe";

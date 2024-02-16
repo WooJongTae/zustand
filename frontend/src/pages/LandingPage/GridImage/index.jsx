@@ -1,18 +1,94 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { AiFillLike } from "react-icons/ai";
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { AiFillLike, AiTwotoneDislike } from "react-icons/ai";
+import useStore from "../../../store/store";
+import axiosInstance from "../../../utils/axios";
 
 const GridImage = ({ movies, actorList }) => {
   // if문써서 return 을 다르게
+  const { initialState } = useStore();
+  const { id } = initialState.userData;
   const [test, setTest] = useState(-1);
+  const [subscribed, setSubscribed] = useState(false);
+  const [recommendMovie, setRecommendMovie] = useState([]);
+  console.log(movies);
+  console.log(recommendMovie);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const userId = { id };
+        const movieData = await axiosInstance.post(
+          "/subscriber/recommendData",
+          userId
+        );
+        console.log(movieData);
+        const movieImages = movieData.data.movieData;
+
+        const detailRequests = movieImages.map((movie) =>
+          axiosInstance.get(
+            `https://api.themoviedb.org/3/movie/${movie.movieId}?api_key=${
+              import.meta.env.VITE_API_KEY
+            }`
+          )
+        );
+        console.log(detailRequests);
+        const detailResponses = await Promise.all(detailRequests);
+        const resultData = detailResponses.map((data) => {
+          return data.data.id;
+        });
+        setRecommendMovie(resultData);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, [subscribed]);
   const onEnter = (num) => {
-    console.log(1244);
     setTest(num);
   };
-
+  console.log(recommendMovie);
   const onLeave = () => {
     console.log(1244);
     setTest(-1);
+  };
+
+  const onSubscribe = (movieId) => {
+    let subscribeData = {
+      movieId,
+      userForm: id,
+    };
+
+    axiosInstance.post("/subscriber/subscribed", subscribeData).then((res) => {
+      if (res.data.success) {
+        console.log(res.data);
+        setSubscribed(res.data.subscribed);
+      } else {
+        alert("실패");
+      }
+    });
+    if (subscribed) {
+      axiosInstance
+        .post("/subscriber/unSubscribedData", subscribeData)
+        .then((res) => {
+          if (res.data.success) {
+            console.log("성공스");
+            setSubscribed(!subscribed);
+          } else {
+            alert("구독 취소실패");
+          }
+        });
+    } else {
+      axiosInstance
+        .post("/subscriber/SubscribedData", subscribeData)
+        .then((res) => {
+          if (res.data.success) {
+            console.log("성공");
+            setSubscribed(!subscribed);
+          } else {
+            alert("구독하기 실패");
+          }
+        });
+    }
   };
 
   if (actorList) {
@@ -42,36 +118,41 @@ const GridImage = ({ movies, actorList }) => {
     return (
       <div className=" grid w-10/12 mx-auto sm:grid-cols-3 mt-10 gap-10 xl:grid-cols-4 grid-cols-1 ">
         {movies.map((movie, i) => (
-          <Link to={`/movie/${movie.id}`} key={i}>
-            <div
-              className=" relative z-10 hover:scale-125 "
-              key={i}
-              onMouseEnter={() => onEnter(i)}
-              onMouseLeave={onLeave}
-            >
-              <div className="">
+          // <Link to={`/movie/${movie.id}`} key={i}>
+          <div
+            className=" relative  hover:scale-125 hover:z-[100]"
+            key={i}
+            onMouseEnter={() => onEnter(i)}
+            onMouseLeave={onLeave}
+          >
+            <div className=" ">
+              <Link to={`/movie/${movie.id}`} key={i}>
                 <img
-                  className=""
+                  className=" "
                   src={`${import.meta.env.VITE_BASE_IMAGE_URL}${
                     movie.poster_path
                   }`}
                   alt={movie.title}
                 />
-              </div>
-              {true && (
-                <div className="w-full bg-black h-20 absolute bottom-0  z-50">
-                  <AiFillLike className=" bg-white" />
-                </div>
-              )}
-              {/* <div className="opacity-0 bg-white  absolute top-[0] left-[0] w-full h-full hover:opacity-100 flex justify-center items-center transition duration-500">
-                {
-                  <p className=" text-black text-5xl text-center">
-                    {movie.title}
-                  </p>
-                }
-              </div> */}
+              </Link>
             </div>
-          </Link>
+            {test === i && (
+              <div className="w-full bg-red-400 h-[100px] absolute z-20 opacity-100 ">
+                {recommendMovie.includes(movie.id) ? (
+                  <AiFillLike
+                    className=" bg-white"
+                    onClick={() => onSubscribe(movie.id)}
+                  />
+                ) : (
+                  <AiTwotoneDislike
+                    className=" bg-white"
+                    onClick={() => onSubscribe(movie.id)}
+                  />
+                )}
+              </div>
+            )}
+          </div>
+          // </Link>
         ))}
       </div>
     );

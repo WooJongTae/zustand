@@ -25,6 +25,7 @@ const SubscribePage = () => {
             }`
           )
         );
+        console.log(detailRequests);
         const detailResponses = await Promise.all(detailRequests);
         console.log(detailResponses);
         setRecommendMovie(detailResponses);
@@ -34,6 +35,7 @@ const SubscribePage = () => {
     };
     fetchData();
   }, []);
+  console.log(recommendMovie);
   const removeData = async (movieId) => {
     try {
       const isResult = window.confirm("정말 삭제 하실 겁니까?..");
@@ -63,7 +65,6 @@ const SubscribePage = () => {
             className=" w-3/5 mx-auto mb-4"
             src={`https://image.tmdb.org/t/p/original/${img.data.backdrop_path}`}
           />
-          <p></p>
         </div>
       ))}
     </div>
