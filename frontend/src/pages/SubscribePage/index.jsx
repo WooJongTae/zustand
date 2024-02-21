@@ -6,7 +6,7 @@ const SubscribePage = () => {
   const { initialState } = useStore();
   const { id } = initialState.userData;
   const [recommendMovie, setRecommendMovie] = useState([]);
-  console.log(recommendMovie);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -15,7 +15,7 @@ const SubscribePage = () => {
           "/subscriber/recommendData",
           userId
         );
-        console.log(movieData);
+
         const movieImages = movieData.data.movieData;
 
         const detailRequests = movieImages.map((movie) =>
@@ -25,9 +25,9 @@ const SubscribePage = () => {
             }`
           )
         );
-        console.log(detailRequests);
+
         const detailResponses = await Promise.all(detailRequests);
-        console.log(detailResponses);
+
         setRecommendMovie(detailResponses);
       } catch (error) {
         console.log(error);
@@ -35,7 +35,7 @@ const SubscribePage = () => {
     };
     fetchData();
   }, []);
-  console.log(recommendMovie);
+
   const removeData = async (movieId) => {
     try {
       const isResult = window.confirm("정말 삭제 하실 겁니까?..");
@@ -45,7 +45,7 @@ const SubscribePage = () => {
         movieId,
         userId,
       });
-      console.log(response);
+
       const updateMovie = recommendMovie.filter((movie) => {
         return movie.data.id !== movieId;
       });

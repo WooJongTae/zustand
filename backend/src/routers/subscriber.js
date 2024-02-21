@@ -33,7 +33,6 @@ router.post("/subscribed", async (req, res, next) => {
 
 router.post("/unSubscribedData", async (req, res, next) => {
   try {
-    console.log("111111", req.body);
     const unSubscribedData = await Subscriber.findOneAndDelete({
       movieId: req.body.movieId,
       userForm: req.body.userForm,
@@ -46,7 +45,6 @@ router.post("/unSubscribedData", async (req, res, next) => {
 
 router.post("/SubscribedData", async (req, res, next) => {
   try {
-    console.log("111111", req.body);
     const SubscribedData = new Subscriber(req.body);
     await SubscribedData.save();
     return res.status(200).json({ success: true });
@@ -68,13 +66,11 @@ router.post("/recommendData", async (req, res, next) => {
 
 router.post("/removeData", async (req, res, next) => {
   try {
-    // console.log(req.body.userId);
-    // console.log(movieId);
     const movieData = await Subscriber.findOneAndDelete({
       userForm: req.body.userId.id,
       movieId: req.body.movieId,
     });
-    console.log(movieData);
+
     return res.status(200).json({ success: true, movieData });
   } catch (error) {
     next(error);

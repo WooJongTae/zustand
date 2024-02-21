@@ -12,6 +12,7 @@ const NavItem = ({ mobile }) => {
     { to: "logout", name: "로그아웃", auth: true },
     { to: "subscribe", name: "나의 추천", auth: true },
     { to: "search", name: "검색", auth: true },
+    { to: "home2", name: "영화찾기", auth: true },
   ];
 
   const handleLogout = () => {
@@ -28,13 +29,19 @@ const NavItem = ({ mobile }) => {
 
         if (name === "로그아웃") {
           return (
-            <li key={name} className="py-2 text-center cursor-pointer">
+            <li
+              key={name}
+              className="py-0 sm:py-2 text-center cursor-pointer bg-bgRed px-0 sm:px-3 rounded-md"
+            >
               <Link onClick={handleLogout}>{name}</Link>
             </li>
           );
         } else {
           return (
-            <li key={name} className="py-2 text-center cursor-pointer">
+            <li
+              key={name}
+              className="py-0 sm:py-2 text-center cursor-pointer bg-bgRed px-0 sm:px-3 rounded-md"
+            >
               <Link to={to}>{name}</Link>
             </li>
           );

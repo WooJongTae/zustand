@@ -24,7 +24,6 @@ const SingleComment = ({ movieId, commentData }) => {
 
     axiosInstance.post("/comment/commentSave", body).then((res) => {
       if (res.data.success) {
-        console.log(res);
         window.location.reload();
       } else {
         alert("실패");
@@ -34,7 +33,7 @@ const SingleComment = ({ movieId, commentData }) => {
   const handleReply = () => {
     setReply(!reply);
   };
-  console.log(commentData);
+
   return (
     <div className=" border-y-2 border-solid border-black">
       {commentData.responseTo && <BiReply />}

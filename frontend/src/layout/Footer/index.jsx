@@ -21,25 +21,30 @@ const Footer = () => {
 
   const selectData = [{ language: "한국어" }, { language: "English" }];
   return (
-    <div className="">
-      <div className=" mx-96">
-        <p>질문이 있으신가요? 문의 전화: xx-xxx-xxx-xxxx(수신자 부담)</p>
+    <div className="bg-black text-white">
+      <div className=" xl:mx-96 opacity-80">
+        <p className=" mt-7">
+          질문이 있으신가요? 문의 전화:{" "}
+          <span className="border-b border-white inline-block">
+            xx-xxx-xxx-xxxx(수신자 부담)
+          </span>
+        </p>
         <div className="flex flex-wrap ">
           {footerData.map((data) => (
-            <div className="w-1/4 py-2 ">
+            <div className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 py-2 ">
               <p className=" border-b-2 inline-block ">{data}</p>
             </div>
           ))}
         </div>
-        <form>
-          <select>
+        <form className="my-5">
+          <select className=" bg-black border border-white ">
             {selectData.map((data) => (
               <option value={data.language}>{data.language}</option>
             ))}
           </select>
         </form>
-        <p>넷플릭스 대한민국</p>
-        <div>
+        <p className="text-[12px] mb-5">넷플릭스 대한민국</p>
+        <div className="text-[12px] mb-10">
           <p>
             넷플릭스서비시스코리아 유한회사 통신판매업신고번호:
             제2018-서울종로-0426호 전화번호: 00-308-321-0161 (수신자 부담)

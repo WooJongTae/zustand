@@ -9,6 +9,10 @@ module.exports = {
       backgroundImage: {
         main: "url('./assets/bg.jpg')",
       },
+      backgroundColor: {
+        bgRed: "rgb(229,9,20)",
+        bgGray: "rgb(45,45,45)",
+      },
     },
   },
   plugins: [],

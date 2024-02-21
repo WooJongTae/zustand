@@ -22,7 +22,7 @@ const test = () => {
   const onSubmit = (data) => {
     console.log("Form submitted.", data);
   };
-  console.log(watchForm);
+
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)} className="">

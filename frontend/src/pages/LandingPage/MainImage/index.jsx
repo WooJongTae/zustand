@@ -8,15 +8,13 @@ import "swiper/css/pagination";
 import axiosInstance from "../../../utils/axios";
 
 const MainImage = ({ imageLists }) => {
-  console.log(imageLists);
-
   const [playMovie, setPlayMovie] = useState("");
 
   const youtubeData = async (movieId) => {
     const reuslt = await axiosInstance.get(
       `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=d606737f6cc63ae44001ea6e4e7aa84c&language=ko-KR`
     );
-    console.log(reuslt);
+
     setPlayMovie(reuslt.data.results[0].key);
   };
 

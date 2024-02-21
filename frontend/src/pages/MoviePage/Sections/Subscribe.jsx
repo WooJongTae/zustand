@@ -24,7 +24,6 @@ const Subscribe = () => {
     const subscribedData = { movieId, userForm: id };
     axiosInstance.post("/subscriber/subscribed", subscribedData).then((res) => {
       if (res.data.success) {
-        console.log(res.data);
         setSubscribed(res.data.subscribed);
       } else {
         alert("실패");

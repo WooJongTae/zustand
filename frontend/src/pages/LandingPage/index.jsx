@@ -33,12 +33,8 @@ const LandingPage = () => {
         import.meta.env.VITE_API_KEY
       }&language=ko-KR&page=1`
     )
-    .then((res) => {
-      console.log(res);
-    });
+    .then((res) => {});
 
-  console.log(movies);
-  console.log(currentPage);
   const loadMovieData = async () => {
     try {
       const response = await axiosInstance.get(

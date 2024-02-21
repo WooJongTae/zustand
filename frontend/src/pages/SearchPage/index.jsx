@@ -42,7 +42,6 @@ const Search = () => {
     SearchResult(inputData);
   };
 
-  console.log(movies);
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)} className="mx-10">

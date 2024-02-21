@@ -56,7 +56,7 @@ function App() {
           <Route path="/movie/:movieId" element={<MoviePage />} />
           <Route path="/subscribe" element={<SubscribePage />} />
           <Route path="/search" element={<Search />} />
-          <Route path="/test" element={<LandingPage />} />
+          <Route path="/home2" element={<LandingPage />} />
         </Route>
         <Route element={<NotAuthRoutes isAuth={isAuth} />}>
           <Route path="/register" element={<RegisterPage />} />
